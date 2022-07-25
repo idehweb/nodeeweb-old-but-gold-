@@ -2,7 +2,7 @@
 
 == How to start?
 
-    git clone https://github.com/idehweb/create-shop-with-nodejs-reactjs-express-mongodb.git
+    git clone https://github.com/idehweb/nodeeweb.git
 
 1. we install: 
 `yarn inastll` or `npm install `
@@ -14,7 +14,7 @@
 6. for admin panel, do this:
     `cd admin-panel`  and `yarn install` or `npm install`    
     
-    mv create-shop-with-nodejs-reactjs-express-mongodb/* ./
+    mv nodeeweb/* ./
     server: cd main & yarn start:server
     client: cd main & yarn start:client
     build client: cd main & yarn build:client    
