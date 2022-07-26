@@ -9,7 +9,7 @@ module.exports = {
     configure: (webpackConfig, { env, paths }) => {
       // console.log('webpackConfig',webpackConfig);
       if (env === 'development') return webpackConfig;
-      webpackConfig['output']['path']=path.resolve(__dirname, '../admin/');
+      webpackConfig['output']['path']=path.resolve(__dirname, '../main/public_media/admin/');
       console.log('webpackConfig',webpackConfig);
 
       return webpackConfig;
