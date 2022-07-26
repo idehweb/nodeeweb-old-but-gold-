@@ -1,8 +1,4 @@
 # [create shop with nodejs reactjs express mongodb | Nodeeweb](https://idehweb.com/product/creare-website-or-application-with-nodeeweb/)
-[![Build Status](https://github.com/artf/grapesjs/actions/workflows/build.yml/badge.svg)](https://github.com/artf/grapesjs/actions)
-[![Chat](https://img.shields.io/badge/chat-discord-7289da.svg)](https://discord.gg/QAbgGXq)
-[![CDNJS](https://img.shields.io/cdnjs/v/grapesjs.svg)](https://cdnjs.com/libraries/grapesjs)
-[![npm](https://img.shields.io/npm/v/grapesjs.svg)](https://www.npmjs.com/package/grapesjs)
 
 Nodeeweb is a free and open source WebApplication Builder , a [CMS] which helps building and handling pages, products, posts and other models.
 It contains frontend, backend, admin.
@@ -21,8 +17,8 @@ It's fast. many modules are built-in and ready to use, it is modular and easily 
 * [Testing](#testing)
 * [Plugins](#plugins)
 * [Support](#support)
-* [Changelog](https://github.com/artf/grapesjs/releases)
-* [Contributing](https://github.com/artf/grapesjs/blob/master/CONTRIBUTING.md)
+* [Changelog](https://github.com/idehweb/nodeeweb/releases)
+* [Contributing](https://github.com/idehweb/nodeeweb/blob/master/CONTRIBUTING.md)
 * [License](#license)
 
 
@@ -69,24 +65,6 @@ For a more practical example I'd suggest looking up the code inside this demo: h
 
 ## Development
 
-Clone the repository and install all the necessary dependencies (`yarn` is highly recommended)
-
-```sh
-$ git clone https://github.com/artf/grapesjs.git
-$ cd grapesjs
-$ yarn
-```
-
-Start the dev server
-
-```sh
-$ yarn start
-```
-
-Once the development server is started you should be able to reach the demo page (eg. `http://localhost:8080`)
-
-
-
 
 
 ## Documentation
@@ -104,7 +82,7 @@ API References could be found here: [API-Reference]
 
 ## Support
 
-If you like the project and you wish to see it grow, please consider supporting us with a donation of your choice or become a backer/sponsor via [Open Collective](https://opencollective.com/grapesjs)
+If you like the project and you wish to see it grow, please consider supporting us with a donation of your choice or become a backer/sponsor via [Open Collective](https://opencollective.com/)
 
 [![PayPalMe](http://grapesjs.com/img/ppme.png)](https://paypal.me/grapesjs)
 [![Bitcoin](https://user-images.githubusercontent.com/11614725/52977952-87235f80-33cf-11e9-9607-7a9a354e1155.png)](https://commerce.coinbase.com/checkout/fc90b940-558d-408b-a166-28a823c98173)
