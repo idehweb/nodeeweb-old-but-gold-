@@ -504,7 +504,7 @@ let self = ({
             "window.BASE_URL='" + setting.BASE_URL + "';\n" +
             "window.SHOP_URL='" + setting.SHOP_URL + "';")
 
-        self.updateFile(res, "/../../../admin/", "variables.js",
+        self.updateFile(res, "/../../../main/public_media/admin/", "variables.js",
             "window.BASE_URL='" + setting.BASE_URL + "';\n" +
             "window.ADMIN_ROUTE='" + setting.ADMIN_ROUTE + "';\n" +
             "window.ADMIN_URL='" + setting.ADMIN_URL + "';\n" +
