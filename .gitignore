@@ -107,6 +107,7 @@ main/public_media/customer/*
 !main/public_media/customer/.blank
 main/public_media/site_setting/*
 !main/public_media/site_setting/.blank
+!main/public_media/site_setting/logo.png
 babel-cache.json
 main/.env.local
 admin-panel/public/variables.js
