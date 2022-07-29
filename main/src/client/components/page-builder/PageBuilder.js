@@ -6,7 +6,7 @@ export function ShowElement(p) {
 
     let {element} = p;
     let {name, type} = element;
-    console.log("name", name);
+    // console.log("name", name);
 
     switch (type) {
         case "text":
@@ -43,19 +43,21 @@ export function ShowElement(p) {
 
 
 export function TEXTNODE({element}) {
-    let {content} = element;
+    let {content, classes} = element;
+    // console.clear()
+    console.log('element',element)
 
-    return <div className={'p-node'}> {content}</div>;
+    return <div className={'p-node ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}> {content}</div>;
     // return <div className={'the-title'}><ShowElement element={component}/></div>;
 
 
 }
 
 export function TITLE({element}) {
-    let {type, components} = element;
+    let {type, components,classes} = element;
     return components.map((com, index) => {
-        console.log("TITLE", com)
-        return <ShowElement key={index} element={com}/>
+        console.log("TITLE", classes)
+        return <div className={'p-title ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}><ShowElement key={index} element={com}/></div>
     })
     // return <div className={'the-title'}><ShowElement element={component}/></div>;
 
@@ -70,19 +72,19 @@ export function CAROUSEL({element}) {
 
 export function SWIPER({element}) {
     let {type, components} = element;
-    console.clear()
-    console.log(components);
+    // console.clear()
+    // console.log(components);
     if (components)
         return components.map((com, index) => {
-            console.log("TITLE", com)
+            // console.log("TITLE", com)
             return <ShowElement key={index} element={com}/>
         })
 
 }
 
 export function SWIPERWrapper({element}) {
-    let {type, components} = element;
-    console.log("SWIPERWrapper")
+    let {type, components, classes} = element;
+    // console.log("SWIPERWrapper")
 
     if (components)
         return <Swiper
@@ -105,7 +107,7 @@ export function SWIPERWrapper({element}) {
                     perPage: 1
                 }
             }}
-            className={"p-0 m-0"}
+            className={"p-0 m-0 " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}
         >{components.map((com, index) => {
             return <ShowElement key={index} element={com}/>
         })}</Swiper>
@@ -113,11 +115,11 @@ export function SWIPERWrapper({element}) {
 }
 
 export function SWIPERSlide({element}) {
-    let {type, components} = element;
+    let {type, components, classes} = element;
     if (components)
         return components.map((com, index) => {
-            console.log("SWIPERSlide", com)
-            return <div className={'SWIPERSlide'}><ShowElement key={index} element={com}/></div>
+            // console.log("SWIPERSlide", com)
+            return <div className={'SWIPERSlide ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}><ShowElement key={index} element={com}/></div>
         })
 
 }
@@ -130,40 +132,28 @@ export function TEXTBOX(element) {
 }
 
 export function IMAGE({element}) {
-    let {type, attributes} = element;
+    let {type, attributes, classes} = element;
     // console.clear()
     // console.log(element);
-    return <img src={attributes.src}/>
+    return <img className={' ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")} src={attributes.src}/>
 
 }
 
 export function SLIDER(element) {
     let {type, fields} = element;
     return "SLIDER";
-    // fields.map(item => {
-    //     console.log("item")
-    //
-    // })
-    // switch (type) {
-    //     case 'SLIDER':
-    //         return "slider";
-    //     case "GRID_LAYOUT":
-    //         return "GRID_LAYOUT";
-    //     case "GRID_COL":
-    //         return "GRID_COL";
-    //     default :
-    //         return <></>
-    // }
+
 }
 
 export function GRID_LAYOUT({element}) {
 
-    let {type, components} = element;
-    console.log("GRID_LAYOUT", components);
+    let {type, components, classes} = element;
+    // console.log("GRID_LAYOUT", components);
 
 
-    return <div className={"limited posrel row grid-layout"}>{components && components.map((item, k) => {
-        console.log("item.name", item.name);
+    return <div
+        className={"limited posrel row grid-layout " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>{components && components.map((item, k) => {
+        // console.log("item.name", item.name);
         return <ShowElement key={k} element={item}/>;
     })}</div>;
     // switc¬h (type) {
@@ -179,26 +169,18 @@ export function GRID_LAYOUT({element}) {
 }
 
 export function GRID_COL({element}) {
-    const {payload, type, components} = element;
-    console.log("GRID_COL");
-    return <div className={"col "}>
+    // console.clear();
+
+
+    const {payload, type, components, classes} = element;
+    console.log("GRID_COL ",classes);
+
+    return <div className={"col " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
         {components && components.map(item => {
-            console.log("item.id", item.id);
+            // console.log("item.id", item.id);
             return <ShowElement element={item}/>;
         })}
     </div>;
-    // let {type} = element;
-    //
-    // switch (type) {
-    //     case 'SLIDER':
-    //         return "slider";
-    //     case "GRID_LAYOUT":
-    //         return "GRID_LAYOUT";
-    //     case "GRID_COL":
-    //         return "GRID_COL";
-    //     default :
-    //         return <></>
-    // }
 }
 
 
@@ -206,14 +188,15 @@ export default function PageBuilder({elements}) {
     let html = elements.html;
     if (elements && elements.pages && elements.pages[0] && elements.pages[0].frames && elements.pages[0].frames[0] && elements.pages[0].frames[0].component && elements.pages[0].frames[0].component.components)
         elements = elements.pages[0].frames[0].component.components;
-    console.log('elements', elements)
-
+    // console.log('elements', elements)
+// console.clear();
     return (
         <div className={'page-builder'}>
             {/*<div*/}
             {/*dangerouslySetInnerHTML={{__html: html}}*/}
             {/*/>*/}
             {elements && elements.map((element, index) => {
+                console.log('#'+index+' element',element)
                 return <ShowElement key={index} element={element}/>
             })}
         </div>

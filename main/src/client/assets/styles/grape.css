@@ -48,3 +48,8 @@ div[data-gjs-type="swiper-container"]{
     display: none;
 
 }
+
+div.swiper-container-horizontal{
+    position: relative;
+    overflow: hidden;
+}

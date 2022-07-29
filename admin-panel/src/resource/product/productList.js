@@ -14,6 +14,7 @@ import {
     ReferenceField,
     SelectInput,
     ReferenceInput,
+    AutocompleteInput,
   ShowButton
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
