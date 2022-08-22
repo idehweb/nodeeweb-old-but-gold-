@@ -1,3 +1,5 @@
+console.log('# menu')
+
 import mongoose from 'mongoose';
 const MenuSchema = new mongoose.Schema({
     name: {},

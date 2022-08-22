@@ -1,15 +1,17 @@
+console.log("index.mjs", new Date());
+
 import express from "express";
+
 import db from "#root/app/db";
 import path from "path";
 // import ssrHandle from "#root/app/ssrHandle";
 import configHandle from "#root/app/configHandle";
 import routeHandle from "#root/app/routeHandle";
 import headerHandle from "#root/app/headerHandle";
-import { the_public_route } from "../routes/public/p";
-import router from "../routes/public/p";
+// import { the_public_route } from "../routes/public/p";
+// import router from "../routes/public/p";
 // import uploadHandle from "#root/app/uploadHandle";
 
-console.log("new date", new Date());
 
 let app = express();
 app.use(function(req, res, next) {

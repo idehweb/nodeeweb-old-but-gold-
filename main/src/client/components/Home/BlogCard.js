@@ -3,7 +3,7 @@ import { withTranslation } from "react-i18next";
 import _truncate from "lodash/truncate";
 import { Link } from "react-router-dom";
 
-import { dFormat,dateFormat, PriceFormat } from "#c/functions/utils";
+import { dFormat, PriceFormat } from "#c/functions/utils";
 import { addItem, MainUrl, removeItem } from "#c/functions/index";
 import { defaultImg } from "#c/assets/index";
 
@@ -11,9 +11,7 @@ import { defaultImg } from "#c/assets/index";
 
 function BlogCard({ onClick, item, method, t }) {
   // let card = store.getState().store.card || [];
-    const [lan, setLan] = useState(store.getState().store.lan || "en");
-
-    let date = dateFormat(item.updatedAt, t);
+  let date = dFormat(item.updatedAt, t);
   let price = null;
   let salePrice = null;
   if (item.price) price = PriceFormat(item.price);
@@ -23,7 +21,7 @@ function BlogCard({ onClick, item, method, t }) {
     backgroundImage = MainUrl + "/" + item.photos[0];
   if (item.thumbnail)
     backgroundImage = MainUrl + "/" + item.thumbnail;
-  let title = encodeURIComponent(item.title[lan].replace(/\\|\//g, ""));
+  let title = encodeURIComponent(item.title.fa.replace(/\\|\//g, ""));
   // console.log('item.labels', item.labels);
   return (
     <div
@@ -42,7 +40,7 @@ function BlogCard({ onClick, item, method, t }) {
             <span className="a-card-title">
               <Link to={"/post/" + item._id + "/" + title}>{_truncate(item.title["fa"], { length: 120 })}</Link>
             </span>
-            <div className={"wer textAlignLeft dateFormat"}>
+            <div className={"wer textAlignLeft"}>
               {date}
             </div>
           </div>

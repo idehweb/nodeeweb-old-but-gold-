@@ -3,7 +3,6 @@ import {Button,ButtonGroup, Card, CardBody, CardFooter, CardHeader, Col, Row} fr
 
 import store from "#c/functions/store";
 // import State from "#c/data/state";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import CreateForm from "#c/components/components-overview/CreateForm";
 import {withTranslation} from 'react-i18next';
 import {
@@ -24,7 +23,7 @@ class GetInformation extends React.Component {
     super(props);
     const {t} = props;
     this.state = {
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       card: store.getState().store.card || [],
 
       token: store.getState().store.user.token || '',
@@ -204,7 +203,7 @@ class GetInformation extends React.Component {
                   type: 'error'
                 });
                 return;
-              }else{onNext()}}}>{t('next')}<ChevronLeftIcon/></Button>
+              }else{onNext()}}}>{t('next')}<i className="material-icons">{'chevron_left'}</i></Button>
           </ButtonGroup>
         </CardFooter>
       </Card>

@@ -5,7 +5,7 @@ import CustomerRT from "#routes/customer/index";
 import PublicRT from "#routes/public/index";
 import BoyRT from "#routes/boy/index";
 import createError from "http-errors";
-import {the_public_route} from "#routes/public/p";
+// import {the_public_route} from "#routes/public/p";
 
 let routeHandle = (app) => {
   console.log("==> routeHandle");

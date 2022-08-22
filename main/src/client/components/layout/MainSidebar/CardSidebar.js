@@ -7,13 +7,12 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { MainUrl, toggleCardbar, updateCard } from "#c/functions/index";
-import AddIcon from '@mui/icons-material/Add';
+
 import { toast } from "react-toastify";
 import { withTranslation } from "react-i18next";
 import CardbarMainNavbar from "./CardbarMainNavbar";
 import Swiper from "#c/components/swiper";
-import RemoveIcon from '@mui/icons-material/Remove';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 import store from "#c/functions/store";
 
 // export const APP_VERSION = process.env.REACT_APP_VERSION_NUM;
@@ -157,7 +156,7 @@ const CardSidebar = ({ props, t }) => {
                 <Button className={" thisiscarda"} onClick={(e) => {
                   e.preventDefault();
                   addItem(idx).then(res => console.log(res));
-                }}> <AddIcon/></Button>
+                }}> <span className="material-icons">add</span></Button>
                 <div className={"number"}>
                   {item.count}
                 </div>
@@ -165,7 +164,7 @@ const CardSidebar = ({ props, t }) => {
                   e.preventDefault();
 
                   minusItem(idx).then(res => console.log(res));
-                }}> <RemoveIcon/></Button>
+                }}> <span className="material-icons">remove</span></Button>
               </div>
             </div>
             <div className={"flex-1 txc imgds mr-2 ml-2"}>
@@ -210,7 +209,7 @@ const CardSidebar = ({ props, t }) => {
             <div className={"flex-1"}>
               <Button className={"notred smallx"} onClick={() => {
                 removeItem(idx).then(res => console.log(res));
-              }}> <DeleteForeverIcon/></Button>
+              }}> <span className="material-icons">delete</span></Button>
             </div>
           </ListGroupItem>);
         })}

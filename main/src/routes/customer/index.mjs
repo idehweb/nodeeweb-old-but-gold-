@@ -1,6 +1,10 @@
+console.log('# routes/customer/index')
+
 import category from "#routes/customer/category";
+import postCategory from "#routes/customer/postCategory";
 import comment from "#routes/customer/comment";
 import customer from "#routes/customer/customer";
+import discount from "#routes/customer/discount";
 import menu from "#routes/customer/menu";
 import notification from "#routes/customer/notification";
 import post from "#routes/customer/post";
@@ -16,6 +20,7 @@ export default {
   category,
   comment,
   customer,
+    discount,
     menu,
   notification,
   post,
@@ -25,5 +30,6 @@ export default {
   story,
   sms,
   product,
+    postCategory,
   settings
 };

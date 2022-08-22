@@ -232,6 +232,12 @@ const Configuration = (props) => {
                                      }}
                         />
                     </ReferenceInput>
+                    {/*<SelectInput optionText={"title."+translate("lan")}*/}
+                                 {/*defaultValue={defaultSiteLan}*/}
+                                 {/*onChange={(event) => {*/}
+                                     {/*handleChange("defaultSiteLan", event.target.value);*/}
+                                 {/*}}*/}
+                    {/*/>*/}
                 {/*<TextInput*/}
                   {/*autoFocus*/}
                   {/*fullWidth*/}

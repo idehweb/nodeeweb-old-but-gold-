@@ -18,11 +18,11 @@ import {
 } from "#c/functions/index"
 import {toast} from "react-toastify";
 // import State from "#c/data/state";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import State from '#c/data/state.json';
 import City from '#c/data/city.json';
 let supportedcity = ['اميريه-تهران', 'تهران', 'منطقه 11 پستي تهران', 'منطقه 13 پستي تهران', 'منطقه 14 پستي تهران', 'منطقه 15 پستي تهران', 'منطقه 16 پستي تهران', 'تجريش'];
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
 function setCity(s) {
   console.log('setCity', s,City);
   let tttt = [];
@@ -41,7 +41,7 @@ class GetAddress extends React.Component {
 
     const {t, onSetAddress} = props;
     this.state = {
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       token: store.getState().store.user.token || '',
       user: store.getState().store.user || {},
       checkOutBillingAddress: {
@@ -422,9 +422,9 @@ class GetAddress extends React.Component {
 
                       <div className={'flex-1 pl-2 textAlignRight theb'}>
 
-                                  <span className="circle-button red" onClick={() => {
+                                  <span className="material-icons circle-button red" onClick={() => {
                                     this.deleteThisAdd(ad)
-                                  }}><ChevronLeftIcon/></span>
+                                  }}>close</span>
 
                       </div>
 
@@ -459,7 +459,7 @@ class GetAddress extends React.Component {
         </CardBody>
         <CardFooter className={'pd-1'}>
           <ButtonGroup size="sm left">
-            <Button className={''} left={"true"} onClick={onPrev}><ChevronRightIcon/>{t('prev')}
+            <Button className={''} left={"true"} onClick={onPrev}><i className="material-icons">{'chevron_right'}</i>{t('prev')}
             </Button>
             <Button className={''} left={"true"} onClick={() => {
               if (!address[hover]) {

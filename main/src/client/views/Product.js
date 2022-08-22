@@ -30,7 +30,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import { toast } from "react-toastify";
 // let the_id='';
 import { RWebShare } from "react-web-share";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
 import DescriptionIcon from "@mui/icons-material/Description";
 import EditAttributesIcon from "@mui/icons-material/EditAttributes";
 import ReviewsIcon from "@mui/icons-material/Reviews";
@@ -175,7 +175,7 @@ const Product = (props) => {
 
       <Row className={"limited posrel justify-end"}>
         <div className={"floating-tools"}>
-          <ButtonGroup >
+          <ButtonGroup vertical>
             <Button className={"love-it"}
                     onClick={() => {
                       loveIt(_id).then(res => {
@@ -235,13 +235,13 @@ const Product = (props) => {
               if (isClient) {
                 // let filePath = path.join(__dirname, "/site_setting/config.js", name);
 
-                window.open(CONFIG.ADMIN_URL + "#/product/"+_id, "_blank").focus();
+                window.open(VARIABLE.ADMIN_URL + "#/product/"+_id, "_blank").focus();
               }
             }}>
               <EditIcon/></Button>}
           </ButtonGroup>
         </div>
-      </Row>
+      </Row>,
       <Row className={"limited posrel"}>
         <Col lg="6" md="12">
           <Row>
@@ -268,19 +268,19 @@ const Product = (props) => {
                         className={"gfdcvgfd"} key={0}><span
                     className={"categories ml-1 mt-2"}>{t("home")}</span></Link>,
                   <Link to={"/"}
-                        className={"gfdcvgfd"} key={1}><ChevronLeftIcon/></Link>,
+                        className={"gfdcvgfd"} key={1}><span className="material-icons">chevron_left</span></Link>,
                   <Link to={"/category/" + firstCategory._id + "/" + firstCategory.name[lan]}
                         className={"gfdcvgfd"} key={2}><span
                     className={"categories ml-1 mt-2"}>{firstCategory.name[lan]}</span></Link>]}
                 {secondCategory && secondCategory.name && secondCategory.name[lan] &&
                 [<Link to={"/category/" + secondCategory._id + "/" + secondCategory.name[lan]}
-                       className={"gfdcvgfd"} key={0}><ChevronLeftIcon/></Link>,
+                       className={"gfdcvgfd"} key={0}><span className="material-icons">chevron_left</span></Link>,
                   <Link to={"/category/" + secondCategory._id + "/" + secondCategory.name[lan]}
                         className={"gfdcvgfd"} key={1}><span
                     className={"categories ml-1 mt-2"}>{secondCategory.name[lan]}</span></Link>]}
                 {thirdCategory && thirdCategory.name && thirdCategory.name[lan] &&
                 [<Link to={"/category/" + thirdCategory._id + "/" + thirdCategory.name[lan]}
-                       className={"gfdcvgfd"} key={0}><ChevronLeftIcon/></Link>,
+                       className={"gfdcvgfd"} key={0}><span className="material-icons">chevron_left</span></Link>,
                   <Link to={"/category/" + thirdCategory._id + "/" + thirdCategory.name[lan]}
                         className={"gfdcvgfd"} key={1}><span
                     className={"categories ml-1 mt-2"}>{thirdCategory.name[lan]}</span></Link>]}
@@ -351,7 +351,54 @@ const Product = (props) => {
         </Col>
         <Col lg={12} md={12} sm={12} xs={12} className={"mt-3 mb-5"}>
 
+          <Row>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+                <div className={"pro-icons"}>
+                  <VerifiedIcon/>
 
+                </div>
+                <div className={"pro-icons-title"}>
+                  ضمانت اصالت و سلامت فیزیکی
+                </div>
+              </div>
+            </Col>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <PaymentsIcon/>
+                </div>
+                <div className={"pro-icons-title"}>
+                  پرداخت حضوری و غیرحضوری
+                </div>
+              </div>
+            </Col>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <DeliveryDiningIcon/>
+                </div>
+                <div className={"pro-icons-title"}>
+                  امکان ارسال فوری
+                </div>
+              </div>
+            </Col>
+            <Col lg={3} md={3} sm={6} xs={6} className={"mb-3"}>
+              <div className={"pro-icons-wrapper"}>
+
+                <div className={"pro-icons"}>
+                  <SupportAgentIcon/>
+                </div>
+                <div className={"pro-icons-title"}>
+                  پشتیبانی ۲۴ ساعته
+                </div>
+              </div>
+            </Col>
+
+
+          </Row>
         </Col>
         <Col lg={12} md={12} sm={12} xs={12}>
 

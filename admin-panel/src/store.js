@@ -2,8 +2,9 @@ import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger'
 import rootReducer from './rootReducer';
-
-export default function configureStore(initialState = { friends: [],theme:'dark' }) {
+// friends: [],
+// theme:'dark'
+export default function configureStore(initialState = {  }) {
   const logger = createLogger({
     collapsed: true,
     predicate: () =>

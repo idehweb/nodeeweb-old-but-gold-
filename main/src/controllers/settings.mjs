@@ -245,15 +245,23 @@ let self = ({
         console.log("settings create");
         Settings.create(req.body, function (err, settings) {
             if (err || !settings) {
-                res.json({
-                    err: err,
-                    success: false,
-                    message: "error!"
-                });
-                return 0;
+                if (res)
+                    return res.json({
+                        err: err,
+                        success: false,
+                        message: "error!"
+                    });
+                else
+                    return ({
+                        err: err,
+                        success: false,
+                        message: "error!"
+                    });
             }
-            res.json(settings);
-            return 0;
+            if (res)
+                return res.json(settings);
+            else
+                return settings
         });
         // });
 
@@ -602,7 +610,19 @@ let self = ({
             // });
         }
 
-    }
+    },
+    exists: function (req, res, next) {
+        return new Promise(function (resolve, reject) {
+            Settings.exists({}, function (err, setting) {
+                if (err || !setting) {
+                    reject(err);
+                } else {
+                    resolve(setting);
+                }
+            });
+        });
+
+    },
 
 });
 export default self;

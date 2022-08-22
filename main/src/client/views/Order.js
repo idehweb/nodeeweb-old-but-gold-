@@ -18,7 +18,7 @@ import PageTitle from "../components/common/PageTitle";
 import {withTranslation} from 'react-i18next';
 import {buy, getOrder} from "../functions/index"
 import {Navigate} from "react-router-dom";
-import EditIcon from '@mui/icons-material/Edit';
+
 class Order extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class Order extends React.Component {
       _id: match.params._id,
       sum: 0,
       redirect_url: '/login',
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       token: store.getState().store.user.token || '',
       user: store.getState().store.user || {},
       redirect: null,
@@ -217,9 +217,9 @@ class Order extends React.Component {
                           <div className={' d-flex posab bilar'}>
                             <div className={'flex-1 pr-2 textAlignLeft theb'}>
 
-                                  <EditIcon className="circle-button green" onClick={() => {
+                                  <span className="material-icons circle-button green" onClick={() => {
                                     this.editThisAdd(billingAddress)
-                                  }}/>
+                                  }}>edit</span>
                             </div>
 
                           </div>

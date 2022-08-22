@@ -1,3 +1,5 @@
+console.log('# notif')
+
 import mongoose from 'mongoose';
 const NotificationSchema = new mongoose.Schema({
     title: String,

@@ -1,3 +1,5 @@
+console.log('# order')
+
 import mongoose from 'mongoose';
 import crypto from 'crypto';
 
@@ -42,6 +44,8 @@ const OrderSchema = new mongoose.Schema({
     sum: Number,
     agentIncome: Number,
     sellerIncome: Number,
+    discount: Number,
+    discountCode: String,
     orderNumber: Number,
     state: {type: Number, default: 0},
     deliveryPrice: {type: Number, default: 0},

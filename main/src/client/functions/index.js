@@ -17,6 +17,7 @@ if (isClient) {
 }
 // export const MainUrl = "http://localhost:3003";
 export const ApiUrl = CONFIG.BASE_URL + '/customer';
+export const THEME_URL = CONFIG.THEME_URL;
 // console.log("REACT_APP_FRONT_ROUTE",process.env);
 // export const ApiUrl = "http://localhost:3003/customer";
 export const token = (typeof window === "undefined") ? null : store.getState().store.user.token;
@@ -74,49 +75,8 @@ export const loadBlogItem = (_id = null) => {
 //   });
 // //
 // };
-export const returnTheBuilderUrl = (_id,type) => MainUrl+"/admin/"+type+"/"+_id+"/";
-export const SaveBuilder = (_id,type,data,headers) => {
-    return new Promise(function (resolve, reject) {
-        let c = [];
-        putData(`${MainUrl}/admin/${type}/${_id}/`, {
-            elements: data
-
-        }, false,headers)
-            .then(data => {
-                let mainD = data["data"];
-                if (mainD.success) {
-                    savePost({order_id: null, card: []});
-                }
-                resolve(mainD);
-            })
-            .catch(err => {
-                reject(err);
-            });
-    });
-};
-export const GetBuilder = (_id,type,headers) => {
-    return new Promise(function (resolve, reject) {
-        let c = [];
-        getData(`${MainUrl}/admin/${type}/${_id}/`, {
-            headers: headers
-
-        }, false)
-            .then(data => {
-                let mainD = data["data"];
-                if (mainD.success) {
-                    savePost({order_id: null, card: []});
-                }
-                resolve(mainD);
-            })
-            .catch(err => {
-                reject(err);
-            });
-    });
-};
 export const SearchIt = (_id) => {
     return new Promise(function (resolve, reject) {
-        let lan = store.getState().store.lan || "en";
-
         let c = [];
         getData(`${ApiUrl}/product/0/5/${_id}`)
             .then((res) => {
@@ -128,7 +88,7 @@ export const SearchIt = (_id) => {
                     if (ir.thumbnail) {
                         ph = MainUrl + "/" + ir.thumbnail;
                     }
-                    let title = encodeURIComponent(ir.title[lan].replace(/\\|\//g, ""));
+                    let title = encodeURIComponent(ir.title.fa.replace(/\\|\//g, ""));
 
                     c.push({title: ir.title, photo: ph, url: "/p/" + ir._id + "/" + title});
 
@@ -211,8 +171,6 @@ export const getMinPrice = (combinations) => {
         combinations.map((comb) => {
             let pri = parseInt(comb.price);
             let spri = parseInt(comb.salePrice);
-            // console.log('pri',pri);
-            // console.log('spri',spri);
             if (comb.in_stock)
                 if (spri && spri != null && spri > 0)
                     array_price.push((spri));
@@ -220,21 +178,18 @@ export const getMinPrice = (combinations) => {
                     array_price.push((pri));
 
         });
+        // console.log(array_price);
         // return 'از' + arrayMin(array_price);
         let min = arrayMin(array_price);
         if (min) {
-            console.log('arrayMin', min);
-
             price = PriceFormat(min);
-            console.log('arrayMin_price', price);
-
         }
 
         return price;
     }
 };
 export const getAllSidebarCategoriesData = (i = "") =>
-    getData(`${ApiUrl}/menu/all/0/300`, {}, true)
+    getData(`${ApiUrl}/category/all/0/300`, {}, true)
         .then(({data}) => {
             if (!data.length) return;
             let parentsArray = [];
@@ -338,17 +293,35 @@ export const fetchCats = () => async (dispatch) => {
 
     }
 };
+export const fetchTheme = () => async (dispatch) => {
+    console.log("fetchTheme");
+    let themeData = store.getState().store.themeData;
+    // console.log('allCategories', allCategories);
+    if (themeData && !themeData.length) {
 
-export const changeTheme = () => async (dispatch) => {
-    console.log("changeTheme");
-    let theme = store.getState().store.theme;
-    theme = (theme == 'light') ? "dark" : "light"
-    return await dispatch({
-        type: "theme/themeLoaded",
-        payload: {theme: theme}
-    });
+        const response = await getThemeData();
 
+        return await dispatch({
+            type: "theme/themeLoaded",
+            payload: {themeData: response}
+        });
 
+    }
+};
+export const fetchHome = () => async (dispatch) => {
+    console.log("fetchHome");
+    let homeData = store.getState().store.homeData;
+    // console.log('allCategories', allCategories);
+    if (homeData && !homeData.length) {
+
+        const response = await getHomeData();
+
+        return await dispatch({
+            type: "data/homeLoaded",
+            payload: {homeData: response}
+        });
+
+    }
 };
 export const SidebarCategoriesData = (i = "") =>
     getData(`${ApiUrl}/category/sidebar/${i}`, {}, true)
@@ -359,6 +332,39 @@ export const SidebarCategoriesData = (i = "") =>
             handleErr(err);
             return err;
         });
+export const getThemeData = (i = "") =>
+    getData(`${THEME_URL}`, {}, true)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            handleErr(err);
+            return err;
+        });
+export const getModelsData = (i = "") =>
+    getData(`http://localhost:3000/db`, {}, true)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            handleErr(err);
+            return err;
+        });
+export const getHomeData = (i = "") => {
+    return {
+        title:"hello",
+        text:"text",
+        des:"desdz",
+    };
+    // getData(`${THEME_URL}`, {}, true)
+    //     .then((res) => {
+    //         return res.data;
+    //     })
+    //     .catch((err) => {
+    //         handleErr(err);
+    //         return err;
+    //     });
+}
 export const getCombination = async (combinations, condition) => {
     let r = await combinations.forEach(async (comb) => {
         // console.log('condition',condition,Object.is(comb.options,condition));
@@ -800,8 +806,6 @@ export const updatetStatus = (status) => {
 export const updateCard = (card, sum = 0) => {
     return new Promise(async function (resolve, reject) {
         let {order_id, user} = await store.getState().store;
-        let lan = store.getState().store.lan || "en";
-
         // let token = store.getState().store.user.token;
 
         await SaveData({card, sum});
@@ -819,7 +823,7 @@ export const updateCard = (card, sum = 0) => {
         card.map((cc) => {
             packaged.push({
                 "product_id": cc._id,
-                "product_name": cc.title[lan],
+                "product_name": cc.title.fa,
                 "price": cc.salePrice || cc.price,
                 "quantity": cc.count,
                 "total_price": cc.count * (cc.salePrice || cc.price)
@@ -1072,7 +1076,7 @@ export const createOrder = (obj) => {
             obj.card.map((cc) => {
                 packaged.push({
                     "product_id": cc._id,
-                    "product_name": cc.title[lan],
+                    "product_name": cc.title.fa,
                     "price": cc.salePrice || cc.price,
                     "quantity": cc.count,
                     "total_price": cc.count * (cc.salePrice || cc.price)
@@ -1294,7 +1298,7 @@ export const goToProduct = (bool) => {
 };
 export const setLanguage = (lan) => {
     return new Promise(async function (resolve, reject) {
-        SaveData({lan: lan || "en"});
+        SaveData({lan: "fa"});
     });
 };
 export const setCountry = (country, d = true) => {

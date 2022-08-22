@@ -21,7 +21,7 @@ function NavbarSearch({className, type = 'prepend', t}) {
   let [load, SetLoad] = useState(false);
   let [openBox, SetOpenBox] = useState(false);
   let [data, SetData] = useState([]);
-  let [lan, setLan] = useState(store.getState().store.lan || 'en');
+  let [lan, setLan] = useState(store.getState().store.lan || 'fa');
   const searchform = useSelector((st) => !!st.store.searchvisible);
 
   const handleClick = () => toggleSearch(searchform);

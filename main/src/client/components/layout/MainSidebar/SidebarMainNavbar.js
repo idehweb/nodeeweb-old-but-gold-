@@ -6,7 +6,7 @@ import { toggleSidebar } from '#c/functions/index';
 import { useSelector } from 'react-redux';
 
 import {logoImg} from '#c/assets/index';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+
 
 function SidebarMainNavbar({ t, hideLogoText = false }) {
   const menu = useSelector((st) => !!st.store.menuVisible);
@@ -27,7 +27,7 @@ function SidebarMainNavbar({ t, hideLogoText = false }) {
             {/*{!hideLogoText && (*/}
               {/*<span className=" d-md-inline ml-1 gfds">فروشگاه آروند</span>*/}
             {/*)}*/}
-            <span className=" d-md-inline ml-1">{t("categories")}</span>
+            <span className=" d-md-inline ml-1">دسته بندی محصولات</span>
 
           </div>
         </NavbarBrand>
@@ -35,7 +35,7 @@ function SidebarMainNavbar({ t, hideLogoText = false }) {
         <div
           className="toggle-sidebar d-sm-inline"
           onClick={handleToggleSidebar}>
-          <NavigateNextIcon/>
+          <i className="material-icons">navigate_next</i>
         </div>
       </Navbar>
     </div>

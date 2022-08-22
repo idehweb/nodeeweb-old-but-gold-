@@ -16,9 +16,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 function AddToCardButton({item, text = '',variable=false,children, t}) {
   let [count, setcount] = useState(0);
-    const [lan, setLan] = useState(store.getState().store.lan || "en");
-
-    let [Navigate, SetNavigate] = useState(null);
+  let [Navigate, SetNavigate] = useState(null);
   let card = useSelector((st) => st.store.card || []);
   let history = useNavigate();
   // useEffect(() => {
@@ -96,7 +94,7 @@ function AddToCardButton({item, text = '',variable=false,children, t}) {
       {count === 0 &&
       <Button size="md" className={'kjhgfgh empty-card'} theme="primary" onClick={(e) => {
         if (text && text === t('options') && !item.single) {
-          let title=encodeURIComponent(item.title[lan].replace(/\\|\//g,''));
+          let title=encodeURIComponent(item.title.fa.replace(/\\|\//g,''));
           SetNavigate('/p/' + item._id + '/' + title);
         }
         else {

@@ -1,3 +1,5 @@
+console.log('# comment')
+
 import mongoose from 'mongoose';
 const CommentSchema = new mongoose.Schema({
   rate: Number,

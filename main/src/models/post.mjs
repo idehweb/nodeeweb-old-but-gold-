@@ -1,11 +1,13 @@
+console.log('# post')
+
 import mongoose from 'mongoose';
 const PostSchema = new mongoose.Schema({
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now},
   active: {type: Boolean, default: true},
-  firstCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
-  secondCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
-  thirdCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+  firstCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'PostCategory'},
+  secondCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'PostCategory'},
+  thirdCategory: {type: mongoose.Schema.Types.ObjectId, ref: 'PostCategory'},
   data: {},
   description: {},
   excerpt: {},

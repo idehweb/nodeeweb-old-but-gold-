@@ -1,5 +1,7 @@
+console.log('# routes/public/p')
+
 // console.log('#f main/src/seo.mjs')
-console.log("#f public/p");
+// console.log("#f public/p");
 
 import path from "path";
 import isbot from "isbot";

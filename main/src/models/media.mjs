@@ -1,3 +1,5 @@
+console.log('# media')
+
 import mongoose from 'mongoose';
 const MediaSchema = new mongoose.Schema({
     title: {

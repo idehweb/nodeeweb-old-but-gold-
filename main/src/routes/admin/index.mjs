@@ -1,6 +1,8 @@
+console.log('# routes/admin/index')
 import attributes from "#routes/admin/attributes";
 import category from "#routes/admin/category";
 import customer from "#routes/admin/customer";
+import discount from "#routes/admin/discount";
 import notification from "#routes/admin/notification";
 import post from "#routes/admin/post";
 import page from "#routes/admin/page";
@@ -9,6 +11,7 @@ import user from "#routes/admin/user";
 import sms from "#routes/admin/sms";
 import story from "#routes/admin/story";
 import media from "#routes/admin/media";
+import postCategory from "#routes/admin/postCategory";
 import product from "#routes/admin/product";
 import settings from "#routes/admin/settings";
 import order from "#routes/admin/order";
@@ -22,6 +25,7 @@ export default {
   category,
   comment,
   customer,
+    discount,
   media,
     menu,
   notification,
@@ -31,6 +35,7 @@ export default {
   story,
   sms,
   product,
+    postCategory,
   settings,
   order,
   ordercart,

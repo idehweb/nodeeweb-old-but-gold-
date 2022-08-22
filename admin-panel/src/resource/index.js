@@ -7,6 +7,7 @@ import Media from "./media/index";
 import Menu from "./menu/index";
 import Order from "./order/index";
 import OrderCart from "./orderCart/index";
+import PageBuilder from "./pageBuilder/index";
 import Post from "./post/index";
 import Product from "./product/index";
 import Configuration from "./configuration/Configuration";
@@ -18,6 +19,6 @@ import User from "./user/index";
 import Settings from "./setting/index";
 
 
-const resources = { Attributes,Action,Category,Configuration,PrivateConfiguration,Customer,MainDashboard,Media,Menu,Order,OrderCart,Post,Product,Settings,Sms,Transaction ,User};
+const resources = { Attributes,Action,Category,Configuration,PrivateConfiguration,Customer,MainDashboard,Media,Menu,Order,OrderCart,PageBuilder,Post,Product,Settings,Sms,Transaction ,User};
 
 export default resources;

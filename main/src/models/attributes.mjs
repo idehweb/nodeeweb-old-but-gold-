@@ -1,3 +1,5 @@
+console.log('# attr')
+
 import mongoose from 'mongoose';
 const AttributesSchema = new mongoose.Schema({
     name: {},

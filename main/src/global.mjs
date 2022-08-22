@@ -1,11 +1,14 @@
+console.log('#global')
+
 import request from "#root/request";
 // const rp from 'request';
 // const randtoken from 'rand-token';
 import User from "#models/user";
+import Settings from "#models/settings";
+
 import Sms from "#controllers/sms";
 import Action from "#controllers/action";
 import Customer from "#models/customer";
-import Settings from "#models/settings";
 // import VARIABLE from "#v/variables";
 import config from "#json/variables/config";
 // import randtoken from "rand-token";

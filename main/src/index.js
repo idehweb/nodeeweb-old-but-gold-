@@ -1,3 +1,5 @@
+console.log('#index.mjsssss')
+
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -9,7 +11,8 @@ import { store, persistor } from '#c/functions/store';
 
 import App from '#c/App';
 import '#c/i18n';
-import {fetchCats,siteStatus} from '#c/functions';
+// import {fetchCats,siteStatus} from '#c/functions';
+import {fetchTheme} from '#c/functions';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.rtl.min.css';
@@ -25,8 +28,10 @@ import '@splidejs/react-splide/css/skyblue';
 // import store from '@/functions/store'
 // import { initFirebase } from "@/components/push-notification";
 // import * as serviceWorker from './serviceWorker';
-store.dispatch(fetchCats());
-store.dispatch(siteStatus);
+// store.dispatch(fetchCats());
+// store.dispatch(siteStatus);
+console.log('index');
+store.dispatch(fetchTheme());
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<Provider store={store}>

@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {Col, Container, Row} from 'shards-react';
 
@@ -8,8 +8,6 @@ import MainSidebar from '#c/components/layout/MainSidebar/MainSidebar';
 import CardSidebar from '#c/components/layout/MainSidebar/CardSidebar';
 import StickyCard from '#c/components/layout/StickyCard';
 import MainFooter from '#c/components/layout/MainFooter';
-import { useSelector } from "react-redux";
-
 import SiteStatus from '#c/components/SiteStatus';
 // import useWindowSize from '#c/components/common/useWindowSize';
 
@@ -17,15 +15,11 @@ import SiteStatus from '#c/components/SiteStatus';
 const DefaultLayout = (props) => {
   // console.clear();
   console.log('==> DefaultLayout');
-    let theme = useSelector((st) => {
-        // console.log("st.store", st.store.productSliderData);
-        return st.store.theme || "light";
-    });
   let {children, width=1200, noNavbar, onChange = () => null,location}=props;
   // console.log(width);
   // let [width2, setWindowSize] = useState(width);
   // useEffect(() => {
-  //   console.log('DefaultLayout...', theme);
+  //   console.log('DefaultLayout...', window.innerWidth, width);
   //
   //   function handleResize() {
   //     // Set window width/height to state
@@ -43,13 +37,13 @@ const DefaultLayout = (props) => {
   //   handleResize();
   //   // Remove event listener on cleanup
   //   return () => window.removeEventListener("resize", handleResize);
-  // }, [theme]);
+  // }, []);
 
-  console.log('DefaultLayout...', theme);
+  console.log('DefaultLayout...', width);
   {/*<SiteStatus/>,*/}
   return (
     [
-      <main key={1} data-theme={theme}>
+      <main key={1}>
         {/*<div>*/}
           {width < 1200 && <MainSidebar {...children.props} />}
           {width > 1199 && <StickyCard {...children.props} />}

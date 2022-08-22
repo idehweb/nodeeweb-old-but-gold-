@@ -1,3 +1,5 @@
+console.log('# Firebase')
+
 import { initializeApp } from 'firebase/app';
 import { subscribeTokenToTopic } from "#c/components/Utils";
 import { getMessaging , getToken,onMessage} from "firebase/messaging";

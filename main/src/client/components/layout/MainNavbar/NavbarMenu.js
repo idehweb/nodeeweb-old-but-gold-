@@ -5,7 +5,7 @@ import {Link, NavLink as RouteNavLink} from 'react-router-dom';
 import {withTranslation} from 'react-i18next';
 import store from "../../../functions/store";
 import {useSelector} from 'react-redux';
-import {Logout,changeTheme} from '#c/functions/index';
+import {Logout} from '#c/functions/index';
 
 const CustomNavItem = ({href, text,children}) => (
   <NavItem>
@@ -60,7 +60,12 @@ const NavbarMenu = ({t}) => {
 
         {/*</CustomNavItem>*/}
 
+        {/*<NavItem>*/}
+        {/*<a className={'nav-link'} href="https://www.arvandguarantee.com/" target="_blank">*/}
+        {/*{t('arvandguarantee')}*/}
 
+        {/*</a>*/}
+        {/*</NavItem>*/}
         <NavItem className={'left-button-border'}>
           {/*<a className="nav-link p-0" href={'/login'}>*/}
 
@@ -113,17 +118,6 @@ const NavbarMenu = ({t}) => {
 
 
               </Link>
-                <Link
-                    onClick={(e)=>{
-                        // e.preventDefault();
-                        store.dispatch(changeTheme());
-                    }}
-                    className={"dropdown-item"}
-                    to={"#"}>
-                    {t("dark/light mode")}
-
-
-                </Link>
               <hr/>
 
               <DropdownItem

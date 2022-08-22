@@ -33,6 +33,7 @@ router.get('/productsByCat/:_id/:offset/:limit/:search', productController.produ
 router.get('/all/:offset/:limit', productController.allW);
 router.get('/all/:offset/:limit/:search', productController.allW);
 router.get('/torob/:offset/:limit', productController.torob);
+router.get('/atefe', productController.atefe);
 
 router.get('/view/:id', productController.viewOne);
 router.get('/story/:offset/:limit/', productController.allStory);

@@ -24,7 +24,6 @@ import CONFIG from "#c/config";
 import ShareIcon from "@mui/icons-material/Share";
 // import { Link, useNavigate, useParams } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import EditIcon from '@mui/icons-material/Edit';
 // let obj = ;
 // let the_id='';
 import { RWebShare } from "react-web-share";
@@ -162,9 +161,8 @@ const Page = (props) => {
                         </RWebShare>}
                         {views && <Button><RemoveRedEyeIcon/><Badge theme="info">{views}</Badge></Button>}
 
-                        {enableAdmin && <a href={CONFIG.ADMIN_URL + "/#/product/" + _id} target={"_blank"}>
-                            <EditIcon/>
-                        </a>}
+                        {enableAdmin && <a href={VARIABLE.ADMIN_URL + "/#/product/" + _id} target={"_blank"}><i
+                            className="material-icons">edit</i></a>}
                     </ButtonGroup>}
                 </div>
                 <Col lg="3" md="4" xs="12">
@@ -179,7 +177,7 @@ const Page = (props) => {
                         <Col lg="12" md="12" className={"single-product"}>
 
                             <h1 className="kjhghjk hgfd ">
-                                {title && title[lan]}
+                                {title && title.fa}
                             </h1>
 
 

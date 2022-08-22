@@ -18,7 +18,7 @@ export default () => {
         <SearchIcon className={"black"}/>
       </div>
       <div className={"d-table m-auto oiuytrt tm-ksa-logo-parent2 nonestf" + searchform}>
-        <Link to="/">{logoImg && <img style={{ maxWidth: 100 }} src={logoImg} alt="mobile logo"/>}</Link>
+        <Link to="/">{logoImg && <img style={{ maxWidth: 58 }} src={logoImg} alt="mobile logo"/>}</Link>
       </div>
       {/*<MainCats/>*/}
 

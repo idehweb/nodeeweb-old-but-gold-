@@ -442,36 +442,36 @@ class LoginForm extends React.Component {
                     </Row>
                     <Row form>
                       <Col md="12" className="form-group">
-                        {/*<p className={"mb-0"}>{"ارسال کد یکبار مصرف از طریق:"}</p>*/}
+                        <p className={"mb-0"}>{"ارسال کد یکبار مصرف از طریق:"}</p>
 
-                        {/*<RadioGroup className={"jhgfghhhh"}>*/}
+                        <RadioGroup className={"jhgfghhhh"}>
 
-                          {/*<FormControlLabel*/}
-                            {/*className={"jhgfgh"}*/}
-                            {/*value={"whatsapp"}*/}
-                            {/*label={t("WhatsApp")}*/}
-                            {/*control={<Radio/>}*/}
-                            {/*// checked={ans === idx2}*/}
-                            {/*checked={loginMethod === "whatsapp"}*/}
-                            {/*onChange={() => {*/}
-                              {/*this.checkResponse("whatsapp");*/}
-                            {/*}}*/}
-                          {/*/>*/}
-                          {/*<FormControlLabel*/}
-                            {/*className={"jhgfgh"}*/}
-                            {/*value={"sms"}*/}
-                            {/*label={t("SMS")}*/}
-                            {/*control={<Radio/>}*/}
-                            {/*// checked={ans === idx2}*/}
-                            {/*checked={loginMethod === "sms"}*/}
-                            {/*onChange={() => {*/}
-                              {/*this.checkResponse("sms");*/}
+                          <FormControlLabel
+                            className={"jhgfgh"}
+                            value={"whatsapp"}
+                            label={t("WhatsApp")}
+                            control={<Radio/>}
+                            // checked={ans === idx2}
+                            checked={loginMethod === "whatsapp"}
+                            onChange={() => {
+                              this.checkResponse("whatsapp");
+                            }}
+                          />
+                          <FormControlLabel
+                            className={"jhgfgh"}
+                            value={"sms"}
+                            label={t("SMS")}
+                            control={<Radio/>}
+                            // checked={ans === idx2}
+                            checked={loginMethod === "sms"}
+                            onChange={() => {
+                              this.checkResponse("sms");
 
-                            {/*}}*/}
-                          {/*/>*/}
+                            }}
+                          />
 
 
-                        {/*</RadioGroup>*/}
+                        </RadioGroup>
                       </Col>
                     </Row>
                     <Button

@@ -1,5 +1,7 @@
+console.log('# routes1')
+
 // Layout Types
-import { DefaultLayout,Nohf,Nof,Pgbuilder } from '#c/layouts/index';
+import { DefaultLayout,Nohf,Nof } from '#c/layouts/index';
 
 // Route Views
 import Profile from '#c/views/Profile';
@@ -17,7 +19,6 @@ import Transaction from '#c/views/Transaction';
 import Transactions from '#c/views/Transactions';
 import Checkout from '#c/views/Checkout';
 import Order from '#c/views/Order';
-import PageBuilder from '#c/views/PageBuilder';
 import Test from '#c/views/Test';
 import Best from '#c/views/Best';
 import Wishlist from "./views/Wishlist";
@@ -26,9 +27,9 @@ export default [
     {
         path: '/',
         exact: true,
-        layout: DefaultLayout,
+        layout: Nohf,
         // element: () => <Navigate to="/blog-posts" />
-        element: Post,
+        element: Home,
     },
     {
         path: '/best',
@@ -180,18 +181,6 @@ export default [
         exact: true,
         layout: Nof,
         element: Checkout
-    },
-    {
-        path: "/page-builder",
-        exact: true,
-        layout: Pgbuilder,
-        element: PageBuilder
-    },
-    {
-        path: "/page-builder/:type/:_id",
-        exact: true,
-        layout: Pgbuilder,
-        element: PageBuilder
     },
     {
         path: "/:_id",

@@ -1435,9 +1435,7 @@ body .rtl .single-product .AddToCardButton .kjhgfgh svg {
   background-color: #1ed67d;
 color:#fff;
 }
-body .rtl .post-style-list .single-product .AddToCardButton button svg{
-  height: 28px;
-}
+
 body .rtl .logo-wrapper-mobile-menu {
   margin-left: 10px;
 }
@@ -1722,10 +1720,6 @@ body .rtl .loadNotFound {
 }
 
 @media (max-width: 1199px) {
-  body .rtl .nav-link svg{
-    margin-left: 5px;
-    font-size: 30px;
-  }
   .frtyuioiuy.input-group-append {
     font-size: 20px;
     left: 0;

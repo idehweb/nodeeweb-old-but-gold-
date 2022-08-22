@@ -1,6 +1,7 @@
 import User from '#models/user';
 import global from '#root/global';
-var self = ( {
+
+var self = ({
     all: function (req, res, next) {
         let offset = 0;
         if (req.params.offset) {
@@ -53,10 +54,25 @@ var self = ( {
 
             });
     },
-    create: function (req, res, next) {
+    create: function (req, res = {}, next = {}) {
+        // console.log('creating user...',req);
         return new Promise(function (resolve, reject) {
             User.create(req.body, function (err, user) {
                 if (err) {
+                    // console.log('error',err)
+                    reject(err);
+                } else {
+                    // console.log('user',user)
+                    resolve(user);
+                }
+            });
+        });
+
+    },
+    exists: function (req, res, next) {
+        return new Promise(function (resolve, reject) {
+            User.exists({}, function (err, user) {
+                if (err || !user) {
                     reject(err);
                 } else {
                     resolve(user);
@@ -92,7 +108,7 @@ var self = ( {
                 res.json({
                     success: false,
                     message: 'error!',
-                    err:err
+                    err: err
                 });
                 return 0;
             }
@@ -141,24 +157,38 @@ var self = ( {
         }
     },
     register: function (req, res, next) {
+        // console.log('registering user...')
         if (req.body.email &&
             req.body.username &&
             req.body.password) {
 
-            let userData = req.body;
-            userData.type = 'user';
-            userData.token = global.generateUnid();
+            // let userData = req.body;
+            req.body.type = 'user';
+            req.body.nickname = req.body.username;
+            // userData.type = 'user';
+            // userData.token = global.generateUnid();
+            req.body.token = global.generateUnid();
+            // console.log(req)
 
-
-            User.create(userData, function (error, user) {
-                if (error) {
-
-                    return res.json({err: error});
-                } else {
+            self.create(req).then(e => {
+                if (res)
                     return res.json({'success': true, 'message': 'ساخته شد'});
+                else
+                    return ({'success': true, 'message': 'ساخته شد'})
+            }).catch(e => {
+                if (res)
+                    return res.json({err: e});
+                else
+                    return ({err: e})
+            })
 
-                }
-            });
+            // User.create(userData, function (error, user) {
+            //     if (error) {
+            //
+            //     } else {
+            //
+            //     }
+            // });
 
         }
     },

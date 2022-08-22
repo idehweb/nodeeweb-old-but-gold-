@@ -1,3 +1,5 @@
+console.log('# sms')
+
 import mongoose from 'mongoose';
 const SmsSchema = new mongoose.Schema({
   createdAt: {type: Date, default: Date.now},

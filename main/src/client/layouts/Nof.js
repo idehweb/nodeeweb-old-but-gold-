@@ -9,15 +9,10 @@ import CardSidebar from '#c/components/layout/MainSidebar/CardSidebar';
 import StickyCard from '#c/components/layout/StickyCard';
 import MainFooter from '#c/components/layout/MainFooter';
 import SiteStatus from '#c/components/SiteStatus';
-import {useSelector} from "react-redux";
 // import useWindowSize from '#c/components/common/useWindowSize';
 
 
 const Nof = ({children, width, noNavbar, onChange = () => null}) => {
-    let theme = useSelector((st) => {
-        // console.log("st.store", st.store.productSliderData);
-        return st.store.theme || "light";
-    });
   // console.log(width);
   // let [width2, setWindowSize] = useState(width);
   // useEffect(() => {
@@ -40,11 +35,11 @@ const Nof = ({children, width, noNavbar, onChange = () => null}) => {
   //   // Remove event listener on cleanup
   //   return () => window.removeEventListener("resize", handleResize);
   // }, []);
-    {/*<SiteStatus key={0}/>,*/}
+
   console.log('DefaultLayout...', width);
   return (
-    [
-      <main className={'container-fluid'}  key={1} data-theme={theme}>
+    [<SiteStatus key={0}/>,
+      <Container fluid key={1}>
         <Row>
           {width < 1200 && <MainSidebar {...children.props} />}
           {width > 1199 && <StickyCard {...children.props} />}
@@ -64,7 +59,7 @@ const Nof = ({children, width, noNavbar, onChange = () => null}) => {
             {children}
           </Col>
         </Row>
-      </main>
+      </Container>
     ]
   );
 };

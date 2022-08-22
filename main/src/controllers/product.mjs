@@ -11,8 +11,30 @@ import mime from "mime";
 import global from "#root/global";
 import mongoose from "mongoose";
 import CONFIG from "#c/config";
+import {CollectContent, DownloadContent, OpenLinks, Root, Scraper} from 'nodejs-web-scraper';
 
 let self = ({
+    atefe: function (req, res, next) {
+        // console.log('number','int','float','double','string','object','array')
+        // let d=0;
+        // let d2='0';
+
+
+        Product.find({
+            title: {
+                $exists: true
+            }
+        }, "_id title slug", function (err, products) {
+            _.forEach(products, pr => {
+                // pr.slug=pr.title.fa;
+
+
+            });
+            //         res.json({
+            //     success:true
+            // });
+        }).lean().limit(3);
+    },
     importproductsfromcsv: function (req, res, next) {
         res.json(req.body);
     },
@@ -1491,8 +1513,8 @@ let self = ({
             .skip(offset).limit((req.params.limit)).populate("firstCategory", "_id name slug").populate("secondCategory", "_id name slug").populate("thirdCategory", "_id name slug")
             .exec(function (err, products) {
                 if (err) {
-                    res.json([]);
-                    return 0;
+                    return res.json([]);
+                    // return 0;
                 }
                 if (!products) {
                     products = [];

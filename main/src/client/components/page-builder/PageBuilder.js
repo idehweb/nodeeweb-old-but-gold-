@@ -1,10 +1,11 @@
 import React from 'react';
 import Swiper from "#c/components/swiper";
+import ProductsSlider, {ProductsSliderServer} from "#c/components/components-overview/ProductsSlider";
 
 export function ShowElement(p) {
     console.log("ShowElement", p);
 
-    let {element} = p;
+    let {element, content} = p;
     let {name, type} = element;
     // console.log("name", name);
 
@@ -25,17 +26,31 @@ export function ShowElement(p) {
 
     switch (name) {
         case "text":
-            return <TITLE element={element}/>;
+            return <TITLE element={element} content={content}/>;
         case "TEXTBOX":
-            return <TEXTBOX element={element}/>;
+            return <TEXTBOX element={element} content={content}/>;
         case "swiper-container":
-            return <SLIDER element={element}/>;
+            return <SLIDER element={element} content={content}/>;
+        case "Slider":
+            return <SWIPERWrapper element={element} content={content}/>;
+        case "Slide":
+            return <SWIPERSlide element={element} content={content}/>;
+        case "ProductSlider":
+            return <ProductSlider element={element} content={content}/>;
+        case "TEXTNODE":
+            return <TEXTNODE element={element} content={content}/>;
+        case "PostSlider":
+            return <PostSlider element={element} content={content}/>;
         case "Row":
-            return <GRID_LAYOUT element={element}/>;
+            return <GRID_LAYOUT element={element} content={content}/>;
         case "Cell":
-            return <GRID_COL element={element}/>;
+            return <GRID_COL element={element} content={content}/>;
+        case "Col":
+            return <GRID_COL element={element} content={content}/>;
+        case "Content":
+            return <Content {...p} element={element} content={content}/>;
         case "CAROUSEL":
-            return <CAROUSEL element={element}/>;
+            return <CAROUSEL element={element} content={content}/>;
         default :
             return <></>
     }
@@ -45,19 +60,21 @@ export function ShowElement(p) {
 export function TEXTNODE({element}) {
     let {content, classes} = element;
     // console.clear()
-    console.log('element',element)
+    console.log('element', element)
 
-    return <div className={'p-node ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}> {content}</div>;
+    return <div
+        className={'p-node ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}> {content}</div>;
     // return <div className={'the-title'}><ShowElement element={component}/></div>;
 
 
 }
 
 export function TITLE({element}) {
-    let {type, components,classes} = element;
-    return components.map((com, index) => {
+    let {type, children, classes} = element;
+    return children && children.map((com, index) => {
         console.log("TITLE", classes)
-        return <div className={'p-title ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}><ShowElement key={index} element={com}/></div>
+        return <div className={'p-title ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
+            <ShowElement key={index} element={com}/></div>
     })
     // return <div className={'the-title'}><ShowElement element={component}/></div>;
 
@@ -71,25 +88,28 @@ export function CAROUSEL({element}) {
 }
 
 export function SWIPER({element}) {
-    let {type, components} = element;
+    let {type, children} = element;
     // console.clear()
-    // console.log(components);
-    if (components)
-        return components.map((com, index) => {
+    // console.log(children);
+    if (children)
+        return children.map((com, index) => {
             // console.log("TITLE", com)
             return <ShowElement key={index} element={com}/>
         })
 
 }
 
-export function SWIPERWrapper({element}) {
-    let {type, components, classes} = element;
-    // console.log("SWIPERWrapper")
+export function SWIPERWrapper(props) {
+    let {element, content} = props;
+    let {type, children, classes} = element;
+    console.clear()
+    console.log("SWIPERWrapper", children)
 
-    if (components)
+    if (children)
         return <Swiper
             perPage={1}
             arrows={true}
+            type={"slide"}
             breakpoints={{
                 1024: {
                     perPage: 1
@@ -108,19 +128,36 @@ export function SWIPERWrapper({element}) {
                 }
             }}
             className={"p-0 m-0 " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}
-        >{components.map((com, index) => {
-            return <ShowElement key={index} element={com}/>
+        >{children.map((com, index) => {
+            return <ShowElement key={index} element={com} content={content}/>
         })}</Swiper>
 
 }
 
-export function SWIPERSlide({element}) {
-    let {type, components, classes} = element;
-    if (components)
-        return components.map((com, index) => {
+export function SWIPERSlide(props) {
+    let {element, content} = props;
+    let {type, children, classes,kind,text,src} = element;
+    console.clear();
+    console.log('props',props)
+    if (children)
+        return children.map((com, index) => {
             // console.log("SWIPERSlide", com)
-            return <div className={'SWIPERSlide ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}><ShowElement key={index} element={com}/></div>
+            return <div
+                className={'SWIPERSlide ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
+                {kind=='link' && <a href={"#"}><ShowElement key={index} element={com} content={content}/></a>}
+                {/*{kind=='text' && <a href={"#"}><ShowElement key={index} element={com} content={content}/></a>}*/}
+                {/*{kind=='image' && <a href={"#"}><ShowElement key={index} element={com} content={content}/></a>}*/}
+                {/*<ShowElement key={index} element={com} content={content}/>*/}
+
+            </div>
         })
+    else
+        return <div
+            className={'SWIPERSlide ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
+            {kind=='text' && text}
+            {kind=='image' && <img src={src}/>}
+        </div>
+
 
 }
 
@@ -131,30 +168,47 @@ export function TEXTBOX(element) {
 
 }
 
+export function ProductSlider(element) {
+    let {type, fields} = element;
+    // cat_id={"629692c48153533551655409"}
+    return <ProductsSlider delay={1100}/>;
+    // return "ProductSlider";
+
+}
+
+export function PostSlider(element) {
+    let {type, fields} = element;
+
+    return "PostSlider";
+
+}
+
 export function IMAGE({element}) {
     let {type, attributes, classes} = element;
     // console.clear()
     // console.log(element);
-    return <img className={' ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")} src={attributes.src}/>
+    return <img className={' ' + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}
+                src={attributes.src}/>
 
 }
 
-export function SLIDER(element) {
-    let {type, fields} = element;
+export function SLIDER(props) {
+    let {element, content} = props
+    let {type, children, classes} = element;
     return "SLIDER";
 
 }
 
-export function GRID_LAYOUT({element}) {
-
-    let {type, components, classes} = element;
-    // console.log("GRID_LAYOUT", components);
+export function GRID_LAYOUT(props) {
+    let {element, content} = props
+    let {type, children, classes} = element;
+    // console.log("GRID_LAYOUT", children);
 
 
     return <div
-        className={"limited posrel row grid-layout " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>{components && components.map((item, k) => {
+        className={"limited posrel row grid-layout " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>{children && children.map((item, k) => {
         // console.log("item.name", item.name);
-        return <ShowElement key={k} element={item}/>;
+        return <ShowElement key={k} element={item} content={content}/>;
     })}</div>;
     // switc¬h (type) {
     //     case 'SLIDER':
@@ -168,26 +222,46 @@ export function GRID_LAYOUT({element}) {
     // }
 }
 
-export function GRID_COL({element}) {
+export function GRID_COL(props) {
     // console.clear();
 
+    const {element, content} = props;
 
-    const {payload, type, components, classes} = element;
-    console.log("GRID_COL ",classes);
+    const {payload, type, children, classes} = element;
+    console.log("GRID_COL ", classes);
 
-    return <div className={"col " + (classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
-        {components && components.map(item => {
+    return <div
+        className={"col " + (typeof classes == 'string' ? classes : classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
+        {children && children.map((item, i) => {
             // console.log("item.id", item.id);
-            return <ShowElement element={item}/>;
+            return <ShowElement {...props} element={item} key={i} content={content}/>;
         })}
     </div>;
 }
 
+export function Content(props) {
+//    console.clear();
+    const {element, content} = props;
+    console.log("props ", element, content);
 
-export default function PageBuilder({elements}) {
-    let html = elements.html;
-    if (elements && elements.pages && elements.pages[0] && elements.pages[0].frames && elements.pages[0].frames[0] && elements.pages[0].frames[0].component && elements.pages[0].frames[0].component.components)
-        elements = elements.pages[0].frames[0].component.components;
+    // const {payload, type, children, classes} = element;
+    if (element && element.content && content && content[element.content])
+        return content[element.content];
+    // return <div className={"col " + (typeof classes =='string' ? classes : classes ? classes.map(ob => (ob.name ? ob.name : ob)).join(" ") : "")}>
+    //     {children && children.map((item,i) => {
+    //         // console.log("item.id", item.id);
+    //         return <ShowElement element={item} key={i}/>;
+    //     })}
+    // </div>;
+}
+
+
+export default function PageBuilder(props) {
+    console.log('props', props)
+    let {elements, content} = props;
+    // let html = elements.html;
+    // if (elements && elements.pages && elements.pages[0] && elements.pages[0].frames && elements.pages[0].frames[0] && elements.pages[0].frames[0].component && elements.pages[0].frames[0].component.children)
+    //     elements = elements.pages[0].frames[0].component.children;
     // console.log('elements', elements)
 // console.clear();
     return (
@@ -196,8 +270,8 @@ export default function PageBuilder({elements}) {
             {/*dangerouslySetInnerHTML={{__html: html}}*/}
             {/*/>*/}
             {elements && elements.map((element, index) => {
-                console.log('#'+index+' element',element)
-                return <ShowElement key={index} element={element}/>
+                console.log('#' + index + ' element', element)
+                return <ShowElement content={content} key={index} element={element}/>
             })}
         </div>
     );

@@ -29,8 +29,8 @@ const Gallery = (params) => {
     <div className={'ltr mt-3'}>
       {(photos && photos.length>0) && <Swiper perPage={1}
               breakpoints={{}}
-              pagination={false}
-              arrows={true}
+              pagination={true}
+              arrows={false}
       >
         {photos.map((item, idx) => {
           return (<div className={''} key={idx}><img src={MainUrl + '/' + item}/></div>);

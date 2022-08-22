@@ -73,8 +73,10 @@ const list = (props) => {
                                )}/>
                 <FunctionField label={translate('resources.post.actions')}
                                render={record => (<div>
-                                   <div><a target={'_blank'}
-                                           href={window.SHOP_URL + 'page-builder/' + record.kind + "/" + record._id+"?token="+localStorage.getItem('token')}>{translate('resources.post.pagebuilder')}</a>
+                                   <div>
+                                       {/*+"?token="+localStorage.getItem('token')*/}
+                                       <a target={'_blank'}
+                                           href={'/#/page-builder'+"/" + record._id}>{translate('resources.post.pagebuilder')}</a>
                                    </div>
                                    <EditButton/></div>)}/>
                 <FunctionField label={translate('resources.post.copy')}

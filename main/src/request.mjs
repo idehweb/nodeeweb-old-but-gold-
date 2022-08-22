@@ -1,3 +1,5 @@
+console.log('#request')
+
 import axios from "axios";
 
 export default (options, callback=()=>({})) => {

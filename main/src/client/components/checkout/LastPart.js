@@ -6,7 +6,6 @@ import store from "#c/functions/store";
 import PriceChunker from "./PriceChunker";
 // import State from "#c/data/state";
 import {withTranslation} from 'react-i18next';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
   buy,
   changeAddressArr,
@@ -24,7 +23,7 @@ class LastPart extends React.Component {
     super(props);
     const {t, theParams} = props;
     this.state = {
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       token: store.getState().store.user.token || '',
       user: store.getState().store.user || {},
       card: store.getState().store.card || [],
@@ -197,7 +196,7 @@ let temp=total;
         </CardBody>
         <CardFooter className={'pd-1'}>
           <ButtonGroup size="sm right">
-            <Button className={''} left={"true"} onClick={onPrev}><ChevronRightIcon/>{t('prev')}</Button>
+            <Button className={''} left={"true"} onClick={onPrev}><i className="material-icons">{'chevron_right'}</i>{t('prev')}</Button>
           </ButtonGroup>
           {Boolean(total<=50000000) && <ButtonGroup size="sm left">
             <Button className={''} left={"true"} onClick={()=>onPlaceOrder(0)}>{t('Place Order')}</Button>

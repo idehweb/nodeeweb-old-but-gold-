@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React from 'react';
 import {NavLink as RouteNavLink} from 'react-router-dom';
 import {NavItem, NavLink} from 'shards-react';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
@@ -6,9 +6,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const SidebarCatItem = ({item, onClick, onHandle, parent, className, children}) => {
   // console.log('className',className);
   // console.log('item.htmlAfter',item.htmlAfter);
-    const [lan, setLan] = useState(store.getState().store.lan || "en");
-
-    if (item){
+  if (item){
     const isActive=(className === item._id);
     return (
       <NavItem className={(isActive) ? 'active the-active-link' : ''}>
@@ -20,9 +18,9 @@ const SidebarCatItem = ({item, onClick, onHandle, parent, className, children}) 
             to={
               parent
                 ? parent !== 'root'
-                ? `/category/${parent.to}/${parent.title[lan]}`
+                ? `/category/${parent.to}/${parent.title.fa}`
                 : '/'
-                : `/category/${item.to}/${item.title[lan]}`
+                : `/category/${item.to}/${item.title.fa}`
             }
           >
             {parent && (

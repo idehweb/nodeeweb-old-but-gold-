@@ -1,3 +1,5 @@
+console.log('# transaction')
+
 import mongoose from "mongoose";
 
 const TransactionSchema = new mongoose.Schema({

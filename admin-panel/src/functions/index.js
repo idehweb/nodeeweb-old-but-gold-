@@ -3,6 +3,8 @@ import theme from './theme';
 import moment from 'jalali-moment';
 import data from './dataProvider';
 import {useTranslate} from 'react-admin';
+// import {MainUrl, savePost} from "../../../main/src/client/functions";
+import API from "./API";
 
 const ADMIN_ROUTE = window.ADMIN_ROUTE;
 const dataProvider = data(ADMIN_ROUTE);
@@ -44,7 +46,43 @@ export const changeLocale = (locale) => {
     type: CHANGE_LOCALE,
     payload: locale,
 })};
+export const SaveBuilder = (_id,type,data,headers) => {
+    return new Promise(function (resolve, reject) {
+        let c = [];
+        API.put("/post/" + _id, JSON.stringify({elements: data}))
+            .then(({data = {}}) => {
+                let mainD = data["data"];
 
+                resolve(mainD);
+            })
+            .catch(err => {
+                reject(err);
+            });
+    });
+};
+export const GetBuilder = (_id) => {
+    // console.log('GetBuilder()==>')
+
+    return new Promise(function (resolve, reject) {
+        let c = [];
+        API.get("/post/" + _id).then(({data = {}}) => {
+            // console.log('resolve GetBuilder')
+
+            //     let mainD = data["data"];
+            // console.log('mainD',data)
+
+            // if (mainD.success) {
+                //     // savePost({order_id: null, card: []});
+                // }
+                resolve(data);
+            })
+            .catch(err => {
+                // console.log('reject GetBuilder')
+
+                reject(err);
+            });
+    });
+};
 
 const old = Number.prototype.toLocaleString;
 Number.prototype.toLocaleString = function (locale) {

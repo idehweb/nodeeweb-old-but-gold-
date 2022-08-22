@@ -1,3 +1,4 @@
+console.log('# AppSSR')
 import React from "react";
 import { withTranslation } from "react-i18next";
 import { Route, Routes,Router } from 'react-router-dom';

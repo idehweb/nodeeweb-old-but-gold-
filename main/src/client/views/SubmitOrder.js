@@ -11,9 +11,7 @@ import pageData from "./../functions/pageData"
 import {withTranslation} from 'react-i18next';
 import {addToCard, buy, createOrder, goToProduct, MainUrl, updateCard} from "../functions/index"
 import {Navigate} from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import ClearIcon from '@mui/icons-material/Clear';
+
 class SubmitOrder extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +19,7 @@ class SubmitOrder extends React.Component {
     this.state = {
       sum: 0,
       card: store.getState().store.card || [],
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       token: store.getState().store.token || '',
       redirect: null,
       update: false,
@@ -374,7 +372,7 @@ class SubmitOrder extends React.Component {
                             <Button className={' thisiscarda'} onClick={(e) => {
                               e.preventDefault();
                               this.addItem(idx);
-                            }}> <AddIcon/></Button>
+                            }}> <span className="material-icons">add</span></Button>
                             <div className={'number'}>
                               {item.count}
                             </div>
@@ -382,7 +380,7 @@ class SubmitOrder extends React.Component {
                               e.preventDefault();
 
                               this.minusItem(idx);
-                            }}> <RemoveIcon/></Button>
+                            }}> <span className="material-icons">remove</span></Button>
                           </div>
                         </div>
                         <div className={'flex-1 txc imgds mr-2 ml-1'}>
@@ -402,7 +400,7 @@ class SubmitOrder extends React.Component {
                         <div className={'flex-1'}>
                           <Button className={'red'} onClick={() => {
                             this.removeItem(idx);
-                          }}> <ClearIcon/></Button>
+                          }}> <span className="material-icons">clear</span></Button>
                         </div>
                         {/*</ListGroupItemHeading>*/}
                       </ListGroupItem>);

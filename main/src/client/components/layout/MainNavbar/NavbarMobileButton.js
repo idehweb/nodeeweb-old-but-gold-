@@ -1,9 +1,9 @@
-import { Logout, toggleCardbar, toggleSearch ,changeTheme} from "#c/functions/index";
+import { Logout, toggleCardbar, toggleSearch } from "#c/functions/index";
 import { useSelector } from "react-redux";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Collapse, DropdownMenu, DropdownToggle, NavLink,Button } from "shards-react";
+import { Collapse, DropdownMenu, DropdownToggle, NavLink } from "shards-react";
 import { withTranslation } from "react-i18next";
 import store from "../../../functions/store";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
@@ -79,18 +79,6 @@ function NavbarMobileButton({ t }) {
 
 
             </Link>
-              <Button
-
-              onClick={(e)=>{
-                // e.preventDefault();
-                // console.log('e',e);
-                  store.dispatch(changeTheme());
-
-              }}>
-              {t("dark/light mode")}
-
-
-            </Button>
             <hr className={"logoutred"}/>
             <Link
 
@@ -129,7 +117,7 @@ function NavbarMobileButton({ t }) {
       <Link to="/">
         <div className={"p-0 text-nowrap px-3 mbu-navbar dfghjiouyt marginauto"}>
           {logoImg && <div className={"logo-wrapper-mobile-menu"}><img
-            style={{ maxWidth: "80px", width: "80px", height: "auto"}} src={logoImg}
+            style={{ maxWidth: "45px", width: "44px", height: "35px"}} src={logoImg}
             alt="mainNavBar logo"/></div>}
         </div>
       </Link>

@@ -1,3 +1,5 @@
+console.log('# link')
+
 import mongoose from 'mongoose';
 const LinkSchema = new mongoose.Schema({
   createdAt: {type: Date, default: Date.now},

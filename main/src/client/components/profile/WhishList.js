@@ -8,7 +8,7 @@ import {
   ListGroupItem,
   Progress
 } from "shards-react";
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 const UserDetails = ({ userDetails }) => (
   <Card small={'true'} className="mb-4 pt-3">
     <CardHeader className="border-bottom text-center">
@@ -23,7 +23,7 @@ const UserDetails = ({ userDetails }) => (
       <h4 className="mb-0">{userDetails.name}</h4>
       <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
       <Button pill outline size="sm" className="mb-2">
-        <PersonAddIcon/> Follow
+        <i className="material-icons mr-1">person_add</i> Follow
       </Button>
     </CardHeader>
     <ListGroup flush>

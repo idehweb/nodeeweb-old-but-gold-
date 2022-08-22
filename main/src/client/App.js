@@ -1,14 +1,13 @@
+console.log('# App')
+
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { Col } from 'shards-react';
-
 import routes from '#c/routes';
-
 import store from '#c/functions/store';
 import { SaveData } from '#c/functions/index';
 import CustomModal from '#c/components/Modal';
-
 const APP = ((props) => {
   console.log(props);
   let {t}=props;

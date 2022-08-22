@@ -16,8 +16,7 @@ import {
   updateCard
 } from "#c/functions/index"
 // import State from "#c/data/state";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import State from '#c/data/state.json';
 import City from '#c/data/city.json';
 let supportedcity = ['اميريه-تهران', 'تهران', 'منطقه 11 پستي تهران', 'منطقه 13 پستي تهران', 'منطقه 14 پستي تهران', 'منطقه 15 پستي تهران', 'منطقه 16 پستي تهران', 'تجريش'];
@@ -42,7 +41,7 @@ class GetDelivery extends React.Component {
     const {t, addressChoosed} = props;
     console.log('addressChoosed', addressChoosed);
     this.state = {
-      lan: store.getState().store.lan || 'en',
+      lan: store.getState().store.lan || 'fa',
       token: store.getState().store.user.token || '',
       user: store.getState().store.user || {},
       card: store.getState().store.card || [],
@@ -323,9 +322,11 @@ class GetDelivery extends React.Component {
         <CardFooter className={'pd-1'}>
           <ButtonGroup size="sm left">
             {!loading2 && <Row>{loader2}</Row>}
-            {loading2 && [<Button className={''} left={"true"} onClick={onPrev}><ChevronRightIcon/>{t('prev')}
+            {loading2 && [<Button className={''} left={"true"} onClick={onPrev}><i
+              className="material-icons">{'chevron_right'}</i>{t('prev')}
             </Button>,
-              <Button className={''} left={"true"} onClick={onNext}>{t('next')}<ChevronLeftIcon/></Button>
+              <Button className={''} left={"true"} onClick={onNext}>{t('next')}<i
+                className="material-icons">{'chevron_left'}</i></Button>
             ]}
 
           </ButtonGroup>
